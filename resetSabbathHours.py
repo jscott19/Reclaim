@@ -60,7 +60,7 @@ class Time(): # Object to store a particular time of day
 
 # Define functions
 
-this_folder = 'g:/My Drive/Personal/Reclaim/'
+this_folder = 'path/to/folder/containing/this/script/'
 def locate(img, confidence=0.6): # locate an image on the screen (for use with pyautogui if visual method of locating text fields is desired in the future)
     shown = False
     while True:
@@ -82,14 +82,14 @@ def locate(img, confidence=0.6): # locate an image on the screen (for use with p
 
 if __name__ == '__main__':
     # Define location
-    location = Location(42.369960, -71.098460) # coordinates of my apartment in Cambridge, MA
+    location = Location(40.7608, -111.8910) # TODO: change this to your own location
 
     # Get sunset time
     r = requests.get('https://api.sunrise-sunset.org/json', params={'lat': location.latitude, 'lng': location.longitude}).json()['results']
     sunset = Time(int(r['sunset'].split(':')[0])-5, int(r['sunset'].split(':')[1]), 'pm')
 
     # Open Reclaim Sabbath hours page
-    url = "https://app.reclaim.ai/settings/hours?id=00eff7cd-ad47-42ec-beb9-2dc4e2d511d5"
+    url = "https://app.reclaim.ai/settings/hours?id=00eff7cd-ad47-42ec-beb9-2dc4e2d511d5" # TODO: change this to your own Reclaim hours page
     webbrowser.open(url, new=2)
     sleep(7)
 
